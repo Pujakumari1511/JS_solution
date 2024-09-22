@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: whitesmoke;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    
+}
+
+header {
+    padding-top: 30px;
+    margin-left: 25px;
+}
+
+header h2 {
+    padding-bottom: 50px;
+}
+
+
+.searchNumber label {
+    display: inline;
+    font-size: 15px;
+    margin-left: 25px;
+    
+}
+ .searchNumber input {
+    height: 50px;
+    width: 250px;
+ }
+
+
+hr {
+    margin-top: 45px;
+    height: 50px;
+    background-color: rgb(14, 175, 228);
+}
+
+main {
+    margin-left: 20px;
+    margin-top: 100px;
+    width: 500px;
+}
+
+
+
+label{
+    display: block;
+    text-align: left;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+
+
+.carForm input {
+    width: 60%;
+    height: 40px;
+    padding-bottom: 15px;
+    
+    border-radius: 5px;
+}
+button {
+    background-color: rgb(14, 175, 228);
+    width: 100px;
+    height: 45px;
+    border-radius: 5px;
+    font-size: 20px;
+    margin-left: 25px;
+    margin-top: 20px; 
+    
+    
+}
+
+.carForm h2 {
+    display: inline;
+    column-gap: 30px;
+}
+
+table th{
+    background-color: rgb(14, 175, 228);
+    border: 1px solid black
+    
+    
+   
+     
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h2>Search car by license number</h2>
+    </header>
+
+    <div class="searchNumber">
+        <label for="licenseNumber">License Number </label>
+        <input type="text" name="licenseNumber" id="licenseNumber">
+        <button type="search" id="search">Search</button>
+    </div>
+
+    <hr>
+
+    
+    <main>
+        <div class="carForm">
+            <h2>Insert car data</h2>
+            <h2>Car database</h2>
+
+            <form id="createForm">
+                <div>
+                    <label for="licensePlate">License Plate</label>
+                    <input type="text" name="licensePlate" id="licensePlate">
+                </div>
+                
+                <div>
+                    <label for="maker">Maker</label>
+                    <input type="text" name="maker" id="maker">
+                </div>
+               
+                <div>
+                    <label for="model">Model</label>
+                    <input type="text" name="model" id="model">
+                </div>
+                
+                <div>
+                    <label for="CurrentOwner">Current Owner</label>
+                    <input type="text" name="CurrentOwner" id="currentOwner">
+                </div>
+
+                <div>
+                    <label for="CurrentOwner">Current Owner</label>
+                    <input type="text" name="CurrentOwner" id="currentOwner">
+                </div>
+                
+                <div>
+                    <label for="price">Price</label>
+                    <input type="text" name="price" id="price">
+                </div>
+                
+                <div>
+                    <label for="color">Color</label>
+                    <input type="text" name="color" id="color">
+                </div>
+                
+
+                <button type="submit" id="addCar">Add car</button>
+                <button type="reset" id="reset">Reset</button>
+            </form>
+        </div>
+        <table id="carDatabase">
+            <tr>
+                <th>License Plate</th>
+                <th>Maker</th>
+                <th>Model</th>
+                <th>Current Owner</th>
+                <th>Price</th>
+                <th>Color</th>
+            </tr>
+        </table>
+
+    </main>
+    <footer>Copyright &copy REACT24S</footer>
+
+    <div class="carDatabase">
+        
+      
+
+    </div>
+    
+
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
