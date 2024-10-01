@@ -1,28 +1,45 @@
+class Order{
+    constructor(pancakeType, toppings, extras, deliveryType, customerName, totalPrice){
+        this.pancakeType = pancakeType;
+        this.toppings = toppings; // []
+        this.extras = extras; // []
+        this.deliveryType = deliveryType;
+        this.customerName = customerName;
+        this.totalPrice = totalPrice;
+    }
+}
 
-const select = document.querySelector("#type")
 
+
+const orders = [];
+
+
+
+const pancakeType = document.querySelector("#type")
 const checkBoxes = document.querySelectorAll('input[type="checkbox"]')
 const delivery = document.getElementById("delivery")
-const input = document.getElementById("fullname")
+const customerName = document.getElementById("customerName")
 const button = document.getElementById("seeOrder")
 const deliveryMethod = document.querySelectorAll('input [name="que"]:checked').value;
 
 
 
 function updatePrice(price) {
-    const totalPrice = document.querySelectorAll("#totalPrice")
-    totalPrice[0].textContent = "$" + price
-    totalPrice[1].textContent = "$" + price
+    const priceBanner = document.getElementsByClassName("price-banner")[0]
+    const totalPrice = document.getElementById("totalPrice")
+    priceBanner.textContent = "$" + price
+    totalPrice.textContent = "$" + price
+    priceBanner.computedStyleMap.width = '100px'
+    
 }
 
 
 let checkbox;
-function pancakeType(){
-    let sum = Number(select.value)
+function calculatePrice(){
+    let sum = Number(pancakeType.value)
     
     for (checkbox of checkBoxes){
         if (checkbox.checked){
-            //console.log(checkbox.id)
             sum += Number(checkbox.value)
         }
     }
@@ -30,33 +47,25 @@ function pancakeType(){
         sum += Number(delivery.value)
     }
     updatePrice(sum) 
-
 } 
-
 
 
 
 function currentOrderDetails(){
     
     const orderDetails = document.getElementById("customer");
-    const nutsDom = document.getElementById("nuts");
-    const bananaDom = document.getElementById("bananas");
-    const syrupDom = document.getElementById("syrup");
-    const whippedCreamDom = document.getElementById("whippedCream");
-    const icecreamDom = document.getElementById("icecream");
     
-
-
-    const nut = nutsDom.input;
-    let nutValue = ""
-        if (nutsDom.checked){
-            nutValue = nutsDom.textContent;
+    const toppings = [];
+    const extras = []
+   
+    for (let j = 0; j < checkBoxes.length; j++){
+        if (checkBoxes[j].checked && checkBoxes[j].name == "toppings"){
+            toppings.push(checkBoxes[j].labels[0].textContent);
         }
-
-    const nuts = nutsDom.labels[0].innerText + ",";
-    const banana = bananaDom.labels[0].innerText + ",";
-    const syrup =  syrupDom.labels[0].innerText + ",";
-
+        if (checkBoxes[j].checked && checkBoxes[j].name == "extras"){
+            extras.push(checkBoxes[j].labels[0].textContent);
+        }
+    }
 
     const deliveryType = document.getElementsByName("que");
     let deliveryTypeChoosen = "";
@@ -67,25 +76,35 @@ function currentOrderDetails(){
     }
 
 
+    const newOrder = new Order(
+        pancakeType.selectedOptions[0].innerText,
+        toppings,
+        extras,
+        deliveryTypeChoosen,
+        customerName.value,
+        document.querySelectorAll("#totalPrice")[0].textContent)
 
-    let paraText = "<p>Name: " + input.value + "</p>" +
-    "<p>Pancake type: " + select.selectedOptions[0].innerText +  "</p>" +
-    "<p>Toppings:" + nutValue + "</p>" +
-    "<p>Extras: Whipperd Cream, Icecream </p>" +
-    "<p>Delivery method: " + deliveryTypeChoosen + "</p>" +
-     "<h4>Total price: $15 </h4>"
+    orders.push(newOrder);
+
+    let paraText = "<p>Name: " + newOrder.customerName + "</p>" +
+    "<p>Pancake type: " + newOrder.pancakeType +  "</p>" +
+    "<p>Toppings: " + newOrder.toppings.join(", ") + "</p>" +
+    "<p>Extras: " + newOrder.extras.join(", ") +  "</p>" +
+    "<p>Delivery method: " + newOrder.deliveryType + "</p>" +
+     "<h4>Total price: " + newOrder.totalPrice + "</h4>"
+
 
     
     orderDetails.innerHTML = paraText;             
 }
 
 
-select.addEventListener("change", pancakeType)
+pancakeType.addEventListener("change", calculatePrice)
 
 for (let checkbox of checkBoxes){
-    checkbox.addEventListener("change", pancakeType)
+    checkbox.addEventListener("change", calculatePrice)
 }
 
-delivery.addEventListener("change", pancakeType)
+delivery.addEventListener("change", calculatePrice)
 
 button.addEventListener("click", currentOrderDetails)

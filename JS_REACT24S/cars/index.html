@@ -7,87 +7,114 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <!-- Search car by license number start -->
+    <hr class="line1">
+
     <header>
         <h2>Search car by license number</h2>
     </header>
 
-    <div class="searchNumber">
-        <label for="licenseNumber">License Number </label>
-        <input type="text" name="licenseNumber" id="licenseNumber">
-        <button type="search" id="search">Search</button>
+    <div id="search-car-license">
+        <div class="searchNumber">
+            <form name="searchNumber" id="searchCarNumber">
+                <label for="licenseNumber">License Number </label>
+                <input type="text" name="licenseNumber" id="licenseNumber" required>
+                <div>
+                <button type="submit" id="search-button">Search</button>
+                </div>
+            </form>
+            
+        </div>
+
+        <div class="car-license" id="search-result"></div>
     </div>
 
-    <hr>
+      <!-- Search car by license number end -->
+   
 
-    
-    <main>
-        <div class="carForm">
+    <hr class="line2">
+
+    <!-- Container of form -->
+
+    <main class="grid-container">
+        <div class="car-form">
             <h2>Insert car data</h2>
-            <h2>Car database</h2>
 
-            <form id="createForm">
-                <div>
+            <!-- form start-->
+            <form name="carForm" id="form">
+                <div class="form-row">
                     <label for="licensePlate">License Plate</label>
-                    <input type="text" name="licensePlate" id="licensePlate">
+                    <input type="text" name="licensePlate" id="licensePlate" required>
                 </div>
                 
-                <div>
+                <div class="form-row">
                     <label for="maker">Maker</label>
-                    <input type="text" name="maker" id="maker">
+                    <input type="text" name="maker" id="maker" required>
                 </div>
                
-                <div>
+                <div class="form-row">
                     <label for="model">Model</label>
-                    <input type="text" name="model" id="model">
+                    <input type="text" name="model" id="model" required>
                 </div>
                 
-                <div>
+                <div class="form-row">
                     <label for="CurrentOwner">Current Owner</label>
-                    <input type="text" name="CurrentOwner" id="currentOwner">
+                    <input type="text" name="CurrentOwner" id="currentOwner" required>
                 </div>
 
-                <div>
-                    <label for="CurrentOwner">Current Owner</label>
-                    <input type="text" name="CurrentOwner" id="currentOwner">
-                </div>
                 
-                <div>
+                <div class="form-row">
                     <label for="price">Price</label>
-                    <input type="text" name="price" id="price">
+                    <input type="number" name="price" id="price" min=0 required>
                 </div>
                 
-                <div>
+                <div class="form-row">
                     <label for="color">Color</label>
-                    <input type="text" name="color" id="color">
+                    <input type="text" name="color" id="color" required>
                 </div>
-                
+
+                <div class="form-row">
+                    <label for="year">Year</label>
+                    <select name="year" id="year" required>
+                        <option value="">Select Year</option>
+                    </select>
+                        
+                </div>
 
                 <button type="submit" id="addCar">Add car</button>
                 <button type="reset" id="reset">Reset</button>
             </form>
+
+            <!-- form end-->
         </div>
-        <table id="carDatabase">
-            <tr>
-                <th>License Plate</th>
-                <th>Maker</th>
-                <th>Model</th>
-                <th>Current Owner</th>
-                <th>Price</th>
-                <th>Color</th>
-            </tr>
-        </table>
+
+        <!-- car table start -->
+        <div class="car-table">
+            <h2>Car database</h2>
+            <table id="carDatabase">
+                <tr>
+                    <th>License Plate</th>
+                    <th>Maker</th>
+                    <th>Model</th>
+                    <th>Current Owner</th>
+                    <th>Price</th>
+                    <th>Color</th>
+                    <th>Year</th>
+                    <th>Discounted price</th>
+                    <th>Delete</th>
+                </tr>
+            </table>
+        </div>
+         <!-- car table end -->
 
     </main>
+    <!-- Container of form end -->
+
     <footer>Copyright &copy REACT24S</footer>
 
-    <div class="carDatabase">
-        
-      
+    <div class="carDatabase"></div>
 
-    </div>
-    
-
-    </div>
     <script src="script.js"></script>
 </body>
 </html>
