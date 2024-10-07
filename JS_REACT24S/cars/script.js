@@ -20,9 +20,10 @@ Show Search Results:
 
 'use strict';
 
-
-const carsArry = []; // inistialing empty array
-localStorage.setItem("user", JSON.stringify(carsArry || []))
+const CARS_KEY = 'cars';
+const carsArry = JSON.parse(localStorage.getItem(CARS_KEY)) || [] ;
+const addCarForm = document.getElementById("addcarform");
+//localStorage.setItem("user", JSON.stringify(carsArry || []))
 
 class Car {
     constructor(licensePlate, maker, model, currentOwner, price, color, year, discountedPrice){
@@ -42,8 +43,19 @@ for (let year = new Date().getFullYear(); year >= 1886; year--) {
     selectYear.options.add(new Option(year, year))
 }
 
+const displayMessage = (message, type = "success") => {
+    const messageElement = document.querySelector("#message");
+    messageElement.textContent = message;
+    messageElement.className = type;
+    setTimeout(() => {
+        messageElement.textContent = "";
+        messageElement.className = "";
+    }, 3000);
+}
+
 function userInput(e){
     e.preventDefault();
+
     const licensePlate = document.getElementById("licensePlate")
     const maker = document.getElementById("maker")
     const model = document.getElementById("model")
@@ -52,17 +64,13 @@ function userInput(e){
     const color = document.getElementById("color")
     const year = document.getElementById("year")
     
-
-    let discountPrice;
     let carDiscountedPrice;
-    let dates = new Date();
-    let years = dates.getFullYear();
+    let years = new Date().getFullYear();
     let carsAge = years - year.value;
     
 
     if (carsAge > 10){
-        discountValue = (price.value * 15)/ 100; 
-        carDiscountedPrice = price.value - discountPrice;   
+        carDiscountedPrice = price.value * 0.85;  
     } else {
         carDiscountedPrice = "N/A"
     }    
@@ -77,10 +85,13 @@ function userInput(e){
     carDiscountedPrice
     );
 
-    
+    addCarForm.reset();
     carsArry.push(car1);
-    displayTable();           
-}
+    localStorage.setItem(CARS_KEY, JSON.stringify(carsArry));
+    displayTable();     
+    displayMessage("Car added successfully!!");
+         
+};
 
 
 const displayTable = () => {
@@ -88,17 +99,32 @@ const displayTable = () => {
 
     table.innerHTML = table.rows[0].innerHTML;
 
-    carsArry.forEach(car => {
+    carsArry.forEach((car, index) => {
         const row = table.insertRow(-1);
 
         Object.values(car).forEach(text => {
             const cell = row.insertCell(-1);
             cell.textContent = text;
         })
+
+        const deleteButton = document.createElement("button2");
+        deleteButton.textContent = "Delete";
+        deleteButton.classList.add("delete");
+        deleteButton.addEventListener("click", () => deleteCar(index));
+        row.insertCell(-1).appendChild(deleteButton);
     })
 }
-const form = document.getElementById("form")
-form.addEventListener("submit", userInput)
+
+const deleteCar = (index) => {
+    carsArry.splice(index, 1);
+    localStorage.setItem("cars", JSON.stringify(carsArry));
+    displayTable();
+    displayMessage("Car deleted successfully!!")
+}
+
+addCarForm.addEventListener("submit", userInput)
+
+displayTable();
 
 console.log(carsArry);
 
@@ -112,15 +138,15 @@ function searchLicensehNumber(e){
     for (let car of carsArry){
         if (car.licensePlate == licenseNumber){
             searchResultText = "<p> License number: " + licenseNumber + "</p>" +
-            "<p> Car maker: " + car.maker + "</p>" +
-            "<p> Car model: " + car.model + "</p>" +
-            "<p> Current owner: " + car.currentOwner + "</p>" +
-            "<p> Car price: " + car.price + "</p>" + 
+            "<p> Maker: " + car.maker + "</p>" +
+            "<p> Model: " + car.model + "</p>" +
+            "<p> Owner: " + car.currentOwner + "</p>" +
+            "<p> Original price: " + car.price + "</p>" + 
             "<p> Discounted price: " + car.discountedPrice + "</p>"
         }   
     } 
 
-    const resultNotFoundText = "There is no car with license number " + licenseNumber + " added to the system. Try again?"
+    const resultNotFoundText = "No car found with the given license plate."
     
     const searchResult = document.getElementById("search-result");
     searchResult.innerHTML = searchResultText ? searchResultText : resultNotFoundText;

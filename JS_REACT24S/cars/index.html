@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <title>Car form</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -38,52 +42,53 @@
     <!-- Container of form -->
 
     <main class="grid-container">
+        <div id="message"></div>
         <div class="car-form">
             <h2>Insert car data</h2>
 
             <!-- form start-->
-            <form name="carForm" id="form">
+            <form name="carForm" id="addcarform">
                 <div class="form-row">
-                    <label for="licensePlate">License Plate</label>
+                    <label class="required" for="licensePlate">License</label><br>
                     <input type="text" name="licensePlate" id="licensePlate" required>
                 </div>
                 
                 <div class="form-row">
-                    <label for="maker">Maker</label>
+                    <label class="required" for="maker">Maker</label><br>
                     <input type="text" name="maker" id="maker" required>
                 </div>
                
                 <div class="form-row">
-                    <label for="model">Model</label>
+                    <label class="required" for="model">Model</label><br>
                     <input type="text" name="model" id="model" required>
                 </div>
                 
                 <div class="form-row">
-                    <label for="CurrentOwner">Current Owner</label>
+                    <label class="required" for="CurrentOwner">Current Owner</label><br>
                     <input type="text" name="CurrentOwner" id="currentOwner" required>
                 </div>
 
                 
                 <div class="form-row">
-                    <label for="price">Price</label>
+                    <label class="required" for="price">Price</label><br>
                     <input type="number" name="price" id="price" min=0 required>
-                </div>
-                
-                <div class="form-row">
-                    <label for="color">Color</label>
-                    <input type="text" name="color" id="color" required>
                 </div>
 
                 <div class="form-row">
-                    <label for="year">Year</label>
+                    <label class="required" for="year">Year</label><br>
                     <select name="year" id="year" required>
                         <option value="">Select Year</option>
                     </select>
-                        
                 </div>
+                   
+                
+                <div class="form-row">
+                    <label for="color">Color</label><br>
+                    <input type="color" id="color" value="#fff000" >
+                </div>        
 
                 <button type="submit" id="addCar">Add car</button>
-                <button type="reset" id="reset">Reset</button>
+                <button type="reset">Reset</button>
             </form>
 
             <!-- form end-->
@@ -102,8 +107,9 @@
                     <th>Color</th>
                     <th>Year</th>
                     <th>Discounted price</th>
-                    <th>Delete</th>
+                    <th>Delete car</th>
                 </tr>
+
             </table>
         </div>
          <!-- car table end -->
