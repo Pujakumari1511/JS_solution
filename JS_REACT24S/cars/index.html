@@ -14,24 +14,24 @@
 
     <!-- Search car by license number start -->
     <hr class="line1">
+    <div class="search-container">
+        <header>
+            <h2>Search car by license number</h2>
+        </header>
 
-    <header>
-        <h2>Search car by license number</h2>
-    </header>
-
-    <div id="search-car-license">
-        <div class="searchNumber">
-            <form name="searchNumber" id="searchCarNumber">
-                <label for="licenseNumber">License Number </label>
-                <input type="text" name="licenseNumber" id="licenseNumber" required>
-                <div>
-                <button type="submit" id="search-button">Search</button>
-                </div>
-            </form>
-            
+        <div id="search-car-license">
+            <div class="searchNumber">
+                <form name="searchNumber" id="searchCarNumber">
+                    <label for="licenseNumber">License Number </label>
+                    <input type="text" name="licenseNumber" id="licenseNumber" maxlength="10" required>
+                    <div>
+                    <button type="submit" id="search-button" class="form-button">Search</button>
+                    </div>
+                </form>
+                
+            </div>
+            <div class="car-license" id="search-result"></div>
         </div>
-
-        <div class="car-license" id="search-result"></div>
     </div>
 
       <!-- Search car by license number end -->
@@ -50,22 +50,22 @@
             <form name="carForm" id="addcarform">
                 <div class="form-row">
                     <label class="required" for="licensePlate">License</label><br>
-                    <input type="text" name="licensePlate" id="licensePlate" required>
+                    <input type="text" name="licensePlate" id="licensePlate" maxlength="10" minlength="3" required>
                 </div>
                 
                 <div class="form-row">
                     <label class="required" for="maker">Maker</label><br>
-                    <input type="text" name="maker" id="maker" required>
+                    <input type="text" name="maker" id="maker" maxlength="20" minlength="3" required>
                 </div>
                
                 <div class="form-row">
                     <label class="required" for="model">Model</label><br>
-                    <input type="text" name="model" id="model" required>
+                    <input type="text" name="model" id="model" maxlength="20" minlength="3" required>
                 </div>
                 
                 <div class="form-row">
                     <label class="required" for="CurrentOwner">Current Owner</label><br>
-                    <input type="text" name="CurrentOwner" id="currentOwner" required>
+                    <input type="text" name="CurrentOwner" id="currentOwner" maxlength="30" required>
                 </div>
 
                 
@@ -87,8 +87,8 @@
                     <input type="color" id="color" value="#fff000" >
                 </div>        
 
-                <button type="submit" id="addCar">Add car</button>
-                <button type="reset">Reset</button>
+                <button type="submit" id="addCar" class="form-button">Add car</button>
+                <button type="reset" class="form-button">Reset</button>
             </form>
 
             <!-- form end-->

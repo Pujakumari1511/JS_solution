@@ -9,11 +9,7 @@ class Order{
     }
 }
 
-
-
 const orders = [];
-
-
 
 const pancakeType = document.querySelector("#type")
 const checkBoxes = document.querySelectorAll('input[type="checkbox"]')
@@ -29,10 +25,20 @@ function updatePrice(price) {
     const totalPrice = document.getElementById("totalPrice")
     priceBanner.textContent = "$" + price
     totalPrice.textContent = "$" + price
-    priceBanner.computedStyleMap.width = '100px'
-    
-}
 
+    const priceBannerAnimation = [
+        { transform: "scale(1)" },
+        { transform: "scale(1.5)" },
+        { transform: "scale(1)" }
+    ];
+
+    const priceBannerTiming = {
+        duration: 500,
+        iteration: 1,
+    };
+    
+    priceBanner.animate(priceBannerAnimation, priceBannerTiming);
+}
 
 let checkbox;
 function calculatePrice(){
@@ -74,8 +80,6 @@ function currentOrderDetails(){
             deliveryTypeChoosen = deliveryType[i].labels[0].textContent;
         }
     }
-
-
     const newOrder = new Order(
         pancakeType.selectedOptions[0].innerText,
         toppings,
