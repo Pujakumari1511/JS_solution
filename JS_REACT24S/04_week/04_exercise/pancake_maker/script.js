@@ -23,8 +23,8 @@ const deliveryMethod = document.querySelectorAll('input [name="que"]:checked').v
 function updatePrice(price) {
     const priceBanner = document.getElementsByClassName("price-banner")[0]
     const totalPrice = document.getElementById("totalPrice")
-    priceBanner.textContent = "$" + price
-    totalPrice.textContent = "$" + price
+    priceBanner.textContent = "€" + price
+    totalPrice.textContent = "€" + price
 
     const priceBannerAnimation = [
         { transform: "scale(1)" },

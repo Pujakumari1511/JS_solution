@@ -18,6 +18,7 @@ body {
   }
 }
 
+
 .image-container {
   flex: 1;
   position: relative;
@@ -41,11 +42,40 @@ body {
   padding: 20px;
 }
 
+.toppings-container {
+  background: #f9cd9b;
+}
+
+.extras-container {
+  background: #f9cd9b;
+}
+
+.delivery-container {
+  background: #f9cd9b;
+}
+
+#type {
+  border: 2px solid brown;
+  height: 30px;
+}
+
+h2, h3 {
+  color: brown;
+}
+
+input[type="checkbox"] {
+  accent-color: brown;
+}
+
+p {
+  color: #dc2e2e;
+}
+
 .price-banner {
   position: absolute;
   top: 20px;
   left: 75%;
-  background-color: #fb0b0b;
+  background-color: brown;
   color: white;
   border-radius: 50%;
   width: 80px;
@@ -58,13 +88,14 @@ body {
 }
 
 #userName input {
-  height: 40px
+  height: 40px;
+  border: 2px solid brown;
 }
 
 button {
   height: 40px;
   margin-left: 20px;
-  background: #fb0b0b;
+  background: #dc2e2e;
   border-radius: 5px;
   color: white;
   border: none;
