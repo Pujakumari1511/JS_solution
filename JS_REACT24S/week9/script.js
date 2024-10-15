@@ -8,10 +8,11 @@ function createCard(user){
       image.src = `https://robohash.org/${user.id}?set=set4`;
       card.appendChild(image);
       const cardText = document.createElement("div");
-      cardText.innerHTML = `<p>Name: ${user.name}</p>
-                  <p>Email: ${user.email}</p>
-                  <p>UserName: ${user.username}</p>`;
+      cardText.innerHTML = `<p><b>Name:</b> ${user.name}</p>
+                  <p><b>Email:</b> ${user.email}</p>
+                  <p><b>UserName:</b> ${user.username}</p>`;
       card.appendChild(cardText);
+      
       cardContainer.appendChild(card);    
 } 
 
